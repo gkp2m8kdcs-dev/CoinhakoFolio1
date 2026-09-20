@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Support — CoinhakoFolio</title>
+    <meta name="description" content="CoinhakoFolio support center. Get help, contact the developer, find FAQs, and learn how to use the app." />
+    <meta name="theme-color" content="#0B0B10" />
+    <link rel="icon" type="image/png" href="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=luxury%20gold%20and%20purple%20gradient%20coin%20icon%20minimal%20logo%20dark%20background%20app%20icon&image_size=square" />
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        :root{
+            --bg:#0B0B10;--surface:rgba(255,255,255,0.04);--surface-2:rgba(255,255,255,0.06);
+            --hairline:rgba(255,255,255,0.08);--text:#FFFFFF;--text-2:rgba(255,255,255,0.72);
+            --text-3:rgba(255,255,255,0.5);--gold:#F0C879;--gold-2:#D9A441;--purple:#9D6BFF;--green:#52D6A4;
+        }
+        body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Arial,sans-serif;
+            background:radial-gradient(900px 500px at 80% -10%,rgba(157,107,219,0.14),transparent 60%),
+                       radial-gradient(700px 500px at -10% 30%,rgba(240,200,121,0.08),transparent 60%),var(--bg);
+            color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.7;}
+        a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
+        .container{max-width:960px;margin:0 auto;padding:0 24px}
+
+        header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(18px);background:rgba(11,11,16,0.72);border-bottom:1px solid var(--hairline)}
+        .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+        .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;color:var(--text)}
+        .brand-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--purple));display:grid;place-items:center;color:#fff;font-weight:800;font-size:12px}
+        .nav-links{display:flex;gap:24px}
+        .nav-links a{color:var(--text-2);font-size:14px}
+        @media(max-width:780px){.nav-links{display:none}}
+
+        .page-head{padding:64px 0 24px;text-align:center}
+        .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:rgba(240,200,121,.10);color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;border:1px solid rgba(240,200,121,.25)}
+        .page-head h1{font-size:clamp(32px,4.5vw,48px);font-weight:800;letter-spacing:-.8px;margin-top:14px;line-height:1.1}
+        .page-head p{color:var(--text-2);font-size:17px;max-width:560px;margin:14px auto 0}
+
+        main{padding:24px 0 64px}
+        .contact-card{
+            display:grid;grid-template-columns:1fr 1fr;gap:0;
+            background:linear-gradient(160deg,rgba(157,107,219,.10),rgba(240,200,121,.06));
+            border:1px solid var(--hairline);border-radius:20px;overflow:hidden;
+        }
+        .contact-card .left{padding:32px}
+        .contact-card .right{padding:32px;background:rgba(255,255,255,.02);border-left:1px solid var(--hairline)}
+        .contact-card h3{font-size:14px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+        .contact-card .email{font-size:24px;font-weight:800;letter-spacing:-.3px}
+        .contact-card .desc{color:var(--text-2);font-size:14px;margin-top:6px}
+        .contact-card .resp{color:var(--text-3);font-size:13px;margin-top:14px;display:flex;align-items:center;gap:8px}
+        .contact-card .resp .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(82,214,164,.18)}
+        .contact-card .right p{color:var(--text-2);font-size:14px}
+        .contact-card .right ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px}
+        .contact-card .right li{display:flex;gap:10px;align-items:flex-start;color:var(--text-2);font-size:14px}
+        @media(max-width:760px){.contact-card{grid-template-columns:1fr}.contact-card .right{border-left:0;border-top:1px solid var(--hairline)}}
+
+        .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
+        .card{background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--hairline);border-radius:20px;padding:24px}
+        .card .ico{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(240,200,121,.22),rgba(157,107,219,.22));color:var(--gold);margin-bottom:14px}
+        .card h2{font-size:17px;font-weight:700;margin-bottom:8px}
+        .card p{color:var(--text-2);font-size:14px}
+        .card ol,.card ul{margin:8px 0 0 20px;display:flex;flex-direction:column;gap:6px;color:var(--text-2);font-size:14px}
+        @media(max-width:760px){.grid{grid-template-columns:1fr}}
+
+        .faq{margin-top:18px;background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--hairline);border-radius:20px;padding:8px}
+        .faq h2.title{font-size:20px;font-weight:700;padding:16px 20px 8px}
+        details{border-top:1px solid var(--hairline);padding:14px 20px}
+        details:first-of-type{border-top:0}
+        summary{cursor:pointer;font-weight:600;font-size:15px;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px}
+        summary::-webkit-details-marker{display:none}
+        summary::after{content:"+";color:var(--text-3);font-size:20px;font-weight:400;transition:transform .2s ease}
+        details[open] summary::after{transform:rotate(45deg)}
+        details p{margin-top:10px;color:var(--text-2);font-size:14px}
+        details p + p{margin-top:6px}
+
+        .form-card{background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--hairline);border-radius:20px;padding:28px;margin-top:18px}
+        .form-card h2{font-size:20px;font-weight:700;margin-bottom:6px}
+        .form-card p.lead{color:var(--text-2);font-size:14px;margin-bottom:18px}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+        .form-row label,.form-block label{display:block;font-size:13px;color:var(--text-2);margin-bottom:6px;font-weight:600}
+        .form-row input,.form-block input,.form-block textarea{
+            width:100%;padding:12px 14px;border-radius:12px;
+            background:rgba(255,255,255,.04);border:1px solid var(--hairline);
+            color:var(--text);font:inherit;font-size:14px;outline:none;
+            transition:border-color .2s ease, background .2s ease;
+        }
+        .form-row input:focus,.form-block input:focus,.form-block textarea:focus{border-color:rgba(240,200,121,.55);background:rgba(255,255,255,.06)}
+        .form-block{margin-top:14px}
+        .form-block textarea{min-height:120px;resize:vertical}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:700;font-size:14px;border:0;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
+        .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1300;box-shadow:0 12px 30px rgba(240,200,121,.25);margin-top:18px}
+        .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 40px rgba(240,200,121,.35)}
+        .form-hint{font-size:12px;color:var(--text-3);margin-top:10px}
+        @media(max-width:640px){.form-row{grid-template-columns:1fr}}
+
+        footer{padding:32px 0;border-top:1px solid var(--hairline);color:var(--text-3)}
+        .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px}
+        .foot a{color:var(--text-2);margin-right:14px}
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav">
+        <a href="index.html" class="brand">
+            <span class="brand-mark">CF</span>
+            <span>CoinhakoFolio</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+            <a href="index.html#features">Features</a>
+            <a href="index.html#privacy">Privacy</a>
+            <a href="support.html">Support</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="page-head">
+        <div class="container">
+            <span class="eyebrow">Help Center</span>
+            <h1>How can we help?</h1>
+            <p>Find answers to common questions, learn how to get the most out of CoinhakoFolio, or reach out to our team directly.</p>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <!-- CONTACT -->
+        <div class="contact-card">
+            <div class="left">
+                <h3>Email Support</h3>
+                <a class="email" href="mailto:Mefepzavap@icloud.com">Mefepzavap@icloud.com</a>
+                <p class="desc">The fastest way to reach the CoinhakoFolio team. We respond to every message.</p>
+                <div class="resp"><span class="dot"></span> Typical response within 1–3 business days</div>
+            </div>
+            <div class="right">
+                <h3>Before You Write</h3>
+                <p>To help us resolve your request quickly, please include:</p>
+                <ul>
+                    <li>• Your device model and iOS version (Settings → General → About)</li>
+                    <li>• CoinhakoFolio app version (Settings → About Coinhako Folio)</li>
+                    <li>• A short description of the issue and steps to trigger it</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- QUICK TIPS -->
+        <div class="grid">
+            <div class="card">
+                <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+                <h2>Getting Started</h2>
+                <ol>
+                    <li>Open the Markets tab and tap the search icon.</li>
+                    <li>Search for a ticker (e.g. AAPL) and tap to open its detail page.</li>
+                    <li>Tap "Add to Watchlist" or "Log Trade" to start tracking.</li>
+                    <li>Visit the Portfolio tab to see your positions update.</li>
+                </ol>
+            </div>
+            <div class="card">
+                <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg></div>
+                <h2>Logging a Trade</h2>
+                <ol>
+                    <li>Go to Trade → tap the "+" button.</li>
+                    <li>Pick the symbol, action (Buy / Sell / Dividend), quantity, and price.</li>
+                    <li>Add a note or tag, optionally attach a receipt photo.</li>
+                    <li>Save — your portfolio updates immediately.</li>
+                </ol>
+            </div>
+            <div class="card">
+                <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div>
+                <h2>Exporting Your Data</h2>
+                <p>Settings → Manage Data → Export. Choose CSV or PDF. Files are saved to your Files app or shared via the system share sheet. Your data never leaves your device unless you explicitly share it.</p>
+            </div>
+            <div class="card">
+                <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div>
+                <h2>Resetting Data</h2>
+                <p>Settings → Manage Data → Reset. Choose to wipe holdings, trades, watchlists, notes, or everything. This action is irreversible, so consider exporting first.</p>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq">
+            <h2 class="title">Frequently Asked Questions</h2>
+
+            <details open>
+                <summary>Does CoinhakoFolio connect to my brokerage?</summary>
+                <p>No. CoinhakoFolio does not connect to any exchange, brokerage, or financial institution. All trades and positions are entered manually by you. The app never executes trades on your behalf.</p>
+            </details>
+
+            <details>
+                <summary>Where is my data stored?</summary>
+                <p>All data you enter — holdings, trades, watchlists, notes, photos — is stored locally on your iPhone inside the app's private sandbox. CoinhakoFolio does not sync your data to any server. Your data may be included in your normal iCloud or iTunes device backups, which are managed by you and governed by Apple's privacy policy.</p>
+            </details>
+
+            <details>
+                <summary>Do I need to create an account?</summary>
+                <p>No. CoinhakoFolio does not require an account, sign-up, or email. Install and start tracking.</p>
+            </details>
+
+            <details>
+                <summary>Are the prices real-time?</summary>
+                <p>Prices shown inside CoinhakoFolio are generated for demonstration and informational purposes. They may not reflect actual market conditions or executable quotes. Always verify current prices with your broker before making investment decisions.</p>
+            </details>
+
+            <details>
+                <summary>Can I import transactions from my broker?</summary>
+                <p>CoinhakoFolio currently supports manual entry and CSV import (Settings → Manage Data → Import). Brokerage API integration is not available and would conflict with the app's privacy-first design.</p>
+            </details>
+
+            <details>
+                <summary>Which iOS version do I need?</summary>
+                <p>iOS 16 or later, on iPhone. iPad is not supported.</p>
+            </details>
+
+            <details>
+                <summary>Why does the app request Camera or Photo Library permission?</summary>
+                <p>CoinhakoFolio only requests Camera and Photo Library access so you can attach receipt or note photos to a trade entry. These permissions are requested on-demand, only when you tap "Take Photo" or "Choose from Library". They are never used in the background.</p>
+            </details>
+
+            <details>
+                <summary>How do I request a feature or report a bug?</summary>
+                <p>Email us at <a href="mailto:Mefepzavap@icloud.com">Mefepzavap@icloud.com</a> with a short description, screenshots if relevant, and your device + iOS version.</p>
+            </details>
+
+            <details>
+                <summary>Does CoinhakoFolio provide investment advice?</summary>
+                <p>No. CoinhakoFolio is an information organization tool only. It does not provide investment advice, recommendations, or brokerage services. Investment involves risk; always consult a qualified financial advisor.</p>
+            </details>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="form-card">
+            <h2>Send us a message</h2>
+            <p class="lead">Your message will be delivered directly to the CoinhakoFolio support inbox. We read every email.</p>
+            <form action="mailto:Mefepzavap@icloud.com" method="post" enctype="text/plain">
+                <div class="form-row">
+                    <div>
+                        <label for="name">Your name</label>
+                        <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+                    </div>
+                    <div>
+                        <label for="email">Your email</label>
+                        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                    </div>
+                </div>
+                <div class="form-block">
+                    <label for="topic">Topic</label>
+                    <input id="topic" name="topic" type="text" placeholder="Bug report · Feature request · Account help" />
+                </div>
+                <div class="form-block">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Describe your question, the steps to reproduce an issue, or your feature idea…" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    Send via Mail
+                </button>
+                <p class="form-hint">Submitting opens your default mail app pre-filled to Mefepzavap@icloud.com. We never see what you don't send.</p>
+            </form>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <div class="container foot">
+        <div>© <span id="year"></span> CoinhakoFolio. All rights reserved.</div>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms of Use</a>
+            <a href="mailto:Mefepzavap@icloud.com">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+
+</body>
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>CoinhakoFolio — Privacy-First Investment Tracker for iPhone</title>
+    <meta name="description" content="CoinhakoFolio is a premium, privacy-first investment tracker for iPhone. Track holdings, log trades, analyze allocation, and journal your edge — all stored locally on your device." />
+    <meta name="keywords" content="CoinhakoFolio, investment tracker, portfolio tracker, trade journal, iPhone, iOS, privacy-first, stock tracker, dividend tracker, portfolio app" />
+    <meta name="author" content="CoinhakoFolio" />
+    <meta name="theme-color" content="#0B0B10" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" type="image/png" href="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=luxury%20gold%20and%20purple%20gradient%20coin%20icon%20minimal%20logo%20dark%20background%20app%20icon&image_size=square" />
+    <meta property="og:title" content="CoinhakoFolio — Privacy-First Investment Tracker" />
+    <meta property="og:description" content="Premium portfolio tracker and trade journal. 100% on-device. No accounts. No tracking." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CoinhakoFolio — Privacy-First Investment Tracker" />
+    <meta name="twitter:description" content="Premium portfolio tracker and trade journal. 100% on-device." />
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        :root{
+            --bg:#0B0B10;
+            --bg-2:#101019;
+            --surface:rgba(255,255,255,0.04);
+            --surface-2:rgba(255,255,255,0.06);
+            --hairline:rgba(255,255,255,0.08);
+            --text:#FFFFFF;
+            --text-2:rgba(255,255,255,0.72);
+            --text-3:rgba(255,255,255,0.5);
+            --gold-1:#F0C879;
+            --gold-2:#D9A441;
+            --purple:#9D6BFF;
+            --green:#52D6A4;
+            --red:#F66B6B;
+            --shadow:0 24px 60px rgba(0,0,0,.45);
+        }
+        html,body{height:100%}
+        body{
+            font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+            background:radial-gradient(1200px 700px at 80% -10%,rgba(157,107,219,0.18),transparent 60%),
+                       radial-gradient(900px 600px at -10% 30%,rgba(240,200,121,0.10),transparent 60%),
+                       var(--bg);
+            color:var(--text);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.55;
+            overflow-x:hidden;
+        }
+        a{color:inherit;text-decoration:none}
+        img{max-width:100%;display:block}
+        .container{max-width:1180px;margin:0 auto;padding:0 24px}
+        .btn{
+            display:inline-flex;align-items:center;gap:10px;
+            padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;
+            transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+            cursor:pointer;border:0;
+        }
+        .btn-primary{
+            background:linear-gradient(135deg,var(--gold-1),var(--gold-2));
+            color:#1a1300;
+            box-shadow:0 12px 30px rgba(240,200,121,.25);
+        }
+        .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 40px rgba(240,200,121,.35)}
+        .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--hairline)}
+        .btn-ghost:hover{background:var(--surface)}
+
+        /* NAV */
+        header{
+            position:sticky;top:0;z-index:50;
+            backdrop-filter:saturate(180%) blur(18px);
+            -webkit-backdrop-filter:saturate(180%) blur(18px);
+            background:rgba(11,11,16,0.72);
+            border-bottom:1px solid var(--hairline);
+        }
+        .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+        .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:.2px}
+        .brand-mark{
+            width:30px;height:30px;border-radius:8px;
+            background:linear-gradient(135deg,var(--gold-1),var(--purple));
+            display:grid;place-items:center;color:#fff;font-weight:800;font-size:12px;
+            box-shadow:0 6px 18px rgba(157,107,219,.4);
+        }
+        .nav-links{display:flex;gap:28px}
+        .nav-links a{color:var(--text-2);font-size:14px}
+        .nav-links a:hover{color:var(--text)}
+        .nav-cta{display:flex;align-items:center;gap:12px}
+        @media(max-width:780px){.nav-links{display:none}}
+
+        /* HERO */
+        .hero{padding:80px 0 60px;position:relative}
+        .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+        .eyebrow{
+            display:inline-flex;align-items:center;gap:8px;
+            padding:6px 12px;border-radius:999px;
+            background:rgba(240,200,121,.10);color:var(--gold-1);
+            font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;
+            border:1px solid rgba(240,200,121,.25);
+        }
+        .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold-1);box-shadow:0 0 0 4px rgba(240,200,121,.18)}
+        h1{
+            font-size:clamp(38px,5.4vw,64px);line-height:1.05;letter-spacing:-1.2px;
+            margin:18px 0 16px;font-weight:800;
+        }
+        h1 .grad{
+            background:linear-gradient(135deg,var(--gold-1) 0%,#fff 40%,var(--purple) 100%);
+            -webkit-background-clip:text;background-clip:text;color:transparent;
+        }
+        .hero p.lead{font-size:18px;color:var(--text-2);max-width:560px}
+        .hero-cta{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+        .hero-meta{display:flex;gap:24px;margin-top:36px;color:var(--text-3);font-size:13px;flex-wrap:wrap}
+        .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+        .hero-meta svg{width:16px;height:16px;opacity:.85}
+
+        /* Phone Mockup */
+        .phone-wrap{display:flex;justify-content:center}
+        .phone{
+            width:320px;height:640px;border-radius:48px;padding:14px;
+            background:linear-gradient(160deg,#1d1c28,#0e0e16);
+            border:1px solid var(--hairline);
+            box-shadow:var(--shadow),inset 0 0 0 1px rgba(255,255,255,.04);
+            position:relative;
+        }
+        .phone::before{
+            content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);
+            width:110px;height:28px;border-radius:20px;background:#000;
+        }
+        .phone-screen{
+            width:100%;height:100%;border-radius:36px;overflow:hidden;
+            background:radial-gradient(circle at 30% 0%,rgba(157,107,219,.22),transparent 60%),
+                       linear-gradient(180deg,#0F0F18,#0A0A12);
+            padding:60px 16px 16px;color:#fff;position:relative;
+        }
+        .phone-screen h4{font-size:13px;color:rgba(255,255,255,.55);font-weight:500;margin-bottom:6px}
+        .phone-screen .big{font-size:30px;font-weight:800;letter-spacing:-.5px}
+        .phone-screen .delta{color:var(--green);font-size:13px;font-weight:600;margin-top:4px}
+        .mini-chart{
+            margin-top:14px;height:80px;border-radius:14px;
+            background:linear-gradient(180deg,rgba(82,214,164,.18),rgba(82,214,164,0));
+            position:relative;overflow:hidden;border:1px solid var(--hairline);
+        }
+        .mini-chart svg{position:absolute;inset:0;width:100%;height:100%}
+        .row-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+        .row{
+            display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;
+            background:rgba(255,255,255,.04);
+        }
+        .row .sym{font-weight:700;font-size:13px;width:42px}
+        .row .name{flex:1;color:rgba(255,255,255,.7);font-size:12px}
+        .row .price{font-weight:600;font-size:13px}
+        .row .pct{font-size:11px;font-weight:700;padding:3px 8px;border-radius:8px}
+        .pct.up{background:rgba(82,214,164,.16);color:var(--green)}
+        .pct.dn{background:rgba(246,107,107,.16);color:var(--red)}
+        .tabbar{
+            position:absolute;left:14px;right:14px;bottom:14px;height:54px;border-radius:18px;
+            background:rgba(20,20,28,.78);backdrop-filter:blur(20px);
+            border:1px solid var(--hairline);display:flex;align-items:center;justify-content:space-around;
+        }
+        .tabbar .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18)}
+        .tabbar .dot.active{background:var(--gold-1);box-shadow:0 0 0 4px rgba(240,200,121,.18)}
+
+        @media(max-width:880px){
+            .hero{padding:48px 0 32px}
+            .hero-grid{grid-template-columns:1fr;gap:36px}
+            .phone{margin:0 auto}
+        }
+
+        /* SECTIONS */
+        section{padding:80px 0}
+        .section-head{text-align:center;max-width:720px;margin:0 auto 48px}
+        .section-head .eyebrow{margin-bottom:14px}
+        h2{font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-.6px;line-height:1.1}
+        h2 + p{color:var(--text-2);margin-top:14px;font-size:17px}
+
+        /* FEATURES */
+        .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+        .feature{
+            padding:22px;border-radius:20px;
+            background:linear-gradient(180deg,var(--surface-2),var(--surface));
+            border:1px solid var(--hairline);
+            transition:transform .25s ease,border-color .25s ease;
+        }
+        .feature:hover{transform:translateY(-3px);border-color:rgba(240,200,121,.35)}
+        .feature .ico{
+            width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+            background:linear-gradient(135deg,rgba(240,200,121,.22),rgba(157,107,219,.22));
+            color:var(--gold-1);margin-bottom:14px;
+        }
+        .feature h3{font-size:17px;font-weight:700;margin-bottom:6px}
+        .feature p{font-size:14px;color:var(--text-2)}
+        @media(max-width:880px){.features{grid-template-columns:1fr 1fr}}
+        @media(max-width:560px){.features{grid-template-columns:1fr}}
+
+        /* SHOWCASE */
+        .showcase{
+            display:grid;grid-template-columns:1fr 1fr;gap:18px;
+            background:linear-gradient(180deg,var(--surface-2),var(--surface));
+            border:1px solid var(--hairline);border-radius:24px;padding:22px;
+        }
+        .shot{
+            aspect-ratio:4/5;border-radius:18px;overflow:hidden;
+            background:#0d0d15;border:1px solid var(--hairline);position:relative;
+            background-image:linear-gradient(135deg,rgba(157,107,219,.20),rgba(240,200,121,.10));
+        }
+        .shot svg{position:absolute;inset:0;width:100%;height:100%}
+        .shot-label{position:absolute;left:14px;bottom:14px;background:rgba(0,0,0,.55);padding:6px 10px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid var(--hairline)}
+        @media(max-width:880px){.showcase{grid-template-columns:1fr}}
+
+        /* STATS */
+        .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+        .stat{
+            text-align:center;padding:24px;border-radius:18px;
+            background:linear-gradient(180deg,var(--surface-2),var(--surface));
+            border:1px solid var(--hairline);
+        }
+        .stat .num{font-size:36px;font-weight:800;letter-spacing:-.5px;
+            background:linear-gradient(135deg,var(--gold-1),var(--purple));
+            -webkit-background-clip:text;background-clip:text;color:transparent;
+        }
+        .stat .lbl{color:var(--text-2);font-size:13px;margin-top:6px}
+        @media(max-width:780px){.stats{grid-template-columns:1fr 1fr}}
+
+        /* PRIVACY */
+        .privacy{
+            display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+            padding:48px;border-radius:24px;
+            background:linear-gradient(160deg,rgba(157,107,219,.10),rgba(240,200,121,.06));
+            border:1px solid var(--hairline);
+        }
+        .privacy h2{font-size:36px}
+        .privacy ul{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:10px}
+        .privacy li{display:flex;gap:12px;align-items:flex-start;color:var(--text-2);font-size:15px}
+        .privacy li .check{
+            flex-shrink:0;width:22px;height:22px;border-radius:50%;
+            background:rgba(82,214,164,.16);color:var(--green);display:grid;place-items:center;
+            font-size:12px;font-weight:800;margin-top:2px;
+        }
+        @media(max-width:880px){.privacy{grid-template-columns:1fr;padding:28px}}
+
+        /* CTA */
+        .cta{
+            text-align:center;padding:64px 32px;border-radius:24px;
+            background:radial-gradient(600px 300px at 50% 0%,rgba(240,200,121,.18),transparent 70%),
+                       linear-gradient(180deg,var(--surface-2),var(--surface));
+            border:1px solid var(--hairline);
+        }
+        .cta h2{margin-bottom:14px}
+        .cta p{color:var(--text-2);max-width:520px;margin:0 auto 26px;font-size:17px}
+
+        /* FOOTER */
+        footer{padding:48px 0 32px;border-top:1px solid var(--hairline);color:var(--text-3)}
+        .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+        .foot-links{display:flex;gap:20px;flex-wrap:wrap}
+        .foot-links a{font-size:14px;color:var(--text-2)}
+        .foot-links a:hover{color:var(--text)}
+        .copy{margin-top:18px;font-size:12px}
+
+        .fade-in{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+        .fade-in.show{opacity:1;transform:translateY(0)}
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav">
+        <a href="index.html" class="brand">
+            <span class="brand-mark">CF</span>
+            <span>CoinhakoFolio</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+            <a href="#features">Features</a>
+            <a href="#showcase">Preview</a>
+            <a href="#privacy">Privacy</a>
+            <a href="support.html">Support</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+        <div class="nav-cta">
+            <a href="#download" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12-1.03.355-2.07 1.044-2.9.812-.97 2.073-1.65 3.12-1.75zM21.6 17.05c-.62 1.43-.92 2.07-1.72 3.34-1.12 1.78-2.71 4-4.69 4.02-1.75.02-2.2-1.14-4.57-1.13-2.37.01-2.87 1.15-4.62 1.13-1.98-.02-3.49-2.03-4.61-3.81C-1.05 16.04-.83 9.05 3.4 5.7c1.49-1.18 3.22-1.92 5.07-1.94 1.97-.02 3.83 1.21 5.04 1.21 1.21 0 3.46-1.5 5.83-1.28.99.04 3.78.4 5.57 3.04-.15.09-3.32 1.94-3.28 5.78.04 4.59 4.02 6.12 4.06 6.14-.04.1-.62 2.15-2.09 4.4z"/></svg>
+                Download on App Store
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="fade-in">
+                <span class="eyebrow"><span class="dot"></span>iPhone · iOS 16+ · 100% On-Device</span>
+                <h1>Track your edge. <span class="grad">Own your data.</span></h1>
+                <p class="lead">CoinhakoFolio is a premium investment tracker and trade journal built for retail investors who want clarity, control, and absolute privacy. No accounts. No cloud. No tracking.</p>
+                <div class="hero-cta">
+                    <a href="#download" class="btn btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12-1.03.355-2.07 1.044-2.9.812-.97 2.073-1.65 3.12-1.75zM21.6 17.05c-.62 1.43-.92 2.07-1.72 3.34-1.12 1.78-2.71 4-4.69 4.02-1.75.02-2.2-1.14-4.57-1.13-2.37.01-2.87 1.15-4.62 1.13-1.98-.02-3.49-2.03-4.61-3.81C-1.05 16.04-.83 9.05 3.4 5.7c1.49-1.18 3.22-1.92 5.07-1.94 1.97-.02 3.83 1.21 5.04 1.21 1.21 0 3.46-1.5 5.83-1.28.99.04 3.78.4 5.57 3.04-.15.09-3.32 1.94-3.28 5.78.04 4.59 4.02 6.12 4.06 6.14-.04.1-.62 2.15-2.09 4.4z"/></svg>
+                        Download on the App Store
+                    </a>
+                    <a href="#features" class="btn btn-ghost">Explore Features</a>
+                </div>
+                <div class="hero-meta">
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/></svg> Privacy by design</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Built for iOS 16+</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg> iPhone only</span>
+                </div>
+            </div>
+
+            <div class="phone-wrap fade-in">
+                <div class="phone" aria-hidden="true">
+                    <div class="phone-screen">
+                        <h4>PORTFOLIO VALUE</h4>
+                        <div class="big">$248,932.10</div>
+                        <div class="delta">▲ $4,218.40 · +1.72% today</div>
+                        <div class="mini-chart">
+                            <svg viewBox="0 0 320 80" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0%" stop-color="#52D6A4" stop-opacity=".5"/>
+                                        <stop offset="100%" stop-color="#52D6A4" stop-opacity="0"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M0,60 L20,55 L40,58 L60,45 L80,50 L100,38 L120,42 L140,30 L160,36 L180,22 L200,28 L220,18 L240,24 L260,14 L280,20 L300,10 L320,16 L320,80 L0,80 Z" fill="url(#g1)"/>
+                                <path d="M0,60 L20,55 L40,58 L60,45 L80,50 L100,38 L120,42 L140,30 L160,36 L180,22 L200,28 L220,18 L240,24 L260,14 L280,20 L300,10 L320,16" fill="none" stroke="#52D6A4" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="row-list">
+                            <div class="row">
+                                <div class="sym">AAPL</div>
+                                <div class="name">Apple Inc.</div>
+                                <div class="price">$192.84</div>
+                                <div class="pct up">+1.4%</div>
+                            </div>
+                            <div class="row">
+                                <div class="sym">NVDA</div>
+                                <div class="name">NVIDIA</div>
+                                <div class="price">$874.21</div>
+                                <div class="pct up">+2.7%</div>
+                            </div>
+                            <div class="row">
+                                <div class="sym">TSLA</div>
+                                <div class="name">Tesla</div>
+                                <div class="price">$241.10</div>
+                                <div class="pct dn">-0.6%</div>
+                            </div>
+                            <div class="row">
+                                <div class="sym">MSFT</div>
+                                <div class="name">Microsoft</div>
+                                <div class="price">$418.55</div>
+                                <div class="pct up">+0.9%</div>
+                            </div>
+                        </div>
+                        <div class="tabbar">
+                            <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section style="padding-top:0">
+        <div class="container">
+            <div class="stats fade-in">
+                <div class="stat"><div class="num">100+</div><div class="lbl">Global equities</div></div>
+                <div class="stat"><div class="num">0</div><div class="lbl">Accounts required</div></div>
+                <div class="stat"><div class="num">100%</div><div class="lbl">Data on-device</div></div>
+                <div class="stat"><div class="num">9</div><div class="lbl">Currencies supported</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+        <div class="container">
+            <div class="section-head fade-in">
+                <span class="eyebrow"><span class="dot"></span>Features</span>
+                <h2>Everything a serious investor needs.</h2>
+                <p>Market intelligence, portfolio tracking, and trade journaling — unified into one premium workflow that respects your privacy.</p>
+            </div>
+
+            <div class="features">
+                <div class="feature fade-in">
+                    <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 6-7"/></svg></div>
+                    <h3>Interactive Charts</h3>
+                    <p>Candlestick, line, and mountain views with crosshair inspection. Native SwiftUI rendering — no third-party libraries.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M9 6V4h6v2"/></svg></div>
+                    <h3>Portfolio Tracking</h3>
+                    <p>Real-time valuation, allocation by symbol and sector, performance curves across multiple timeframes.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v6H4z"/><path d="M4 14h16v6H4z"/><path d="M8 7h2M8 17h2"/></svg></div>
+                    <h3>Trade Journal</h3>
+                    <p>Log buy, sell, and dividend transactions with notes, tags, and receipt photos from camera or library.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+                    <h3>Dividend Tracker</h3>
+                    <p>Monitor dividend income and yield across positions to measure the pulse of your portfolio's cash flow.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M20 4L4 20"/></svg></div>
+                    <h3>Position Sizing</h3>
+                    <p>Calculate optimal share counts based on account size, risk tolerance, and stop-loss placement with real-time R:R.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div>
+                    <h3>ROI Calculator</h3>
+                    <p>Compute absolute returns and annualized yield over any time period across multiple currencies.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+                    <h3>Sector Heatmaps</h3>
+                    <p>Discover opportunities with screeners, sector performance, earnings calendars, and a sentiment gauge.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4h-4V3"/><path d="M3 8h18M5 8v12h14V8"/><path d="M9 14h6"/></svg></div>
+                    <h3>Tax-Ready Reports</h3>
+                    <p>Realized-gain summaries by sell transactions each year, giving you a starting point for tax prep.</p>
+                </div>
+                <div class="feature fade-in">
+                    <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                    <h3>Multi-Currency</h3>
+                    <p>Convert USD, GBP, EUR, CAD, AUD, JPY, HKD, CNY, and CHF with indicative rates baked into your workflow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOWCASE -->
+    <section id="showcase">
+        <div class="container">
+            <div class="section-head fade-in">
+                <span class="eyebrow"><span class="dot"></span>Preview</span>
+                <h2>Designed for clarity.</h2>
+                <p>A glassmorphic dark theme with gold accents, dynamic gradients, and a custom floating tab bar.</p>
+            </div>
+            <div class="showcase fade-in">
+                <div class="shot">
+                    <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+                        <defs>
+                            <linearGradient id="sg1" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#9D6BFF" stop-opacity=".5"/><stop offset="100%" stop-color="#F0C879" stop-opacity=".2"/></linearGradient>
+                        </defs>
+                        <rect width="400" height="500" fill="url(#sg1)"/>
+                        <g stroke="#F0C879" stroke-width="2" fill="none">
+                            <path d="M30,420 L70,380 L110,400 L150,330 L190,360 L230,280 L270,310 L310,230 L350,260 L380,200"/>
+                        </g>
+                        <g fill="#9D6BFF" opacity=".5">
+                            <circle cx="30" cy="420" r="3"/><circle cx="70" cy="380" r="3"/><circle cx="110" cy="400" r="3"/><circle cx="150" cy="330" r="3"/><circle cx="190" cy="360" r="3"/><circle cx="230" cy="280" r="3"/><circle cx="270" cy="310" r="3"/><circle cx="310" cy="230" r="3"/><circle cx="350" cy="260" r="3"/><circle cx="380" cy="200" r="3"/>
+                        </g>
+                    </svg>
+                    <span class="shot-label">Candlestick + Crosshair</span>
+                </div>
+                <div class="shot">
+                    <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+                        <defs>
+                            <linearGradient id="sg2" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#52D6A4" stop-opacity=".4"/><stop offset="100%" stop-color="#9D6BFF" stop-opacity=".3"/></linearGradient>
+                        </defs>
+                        <rect width="400" height="500" fill="url(#sg2)"/>
+                        <g>
+                            <rect x="40" y="160" width="60" height="240" fill="#9D6BFF" opacity=".6" rx="6"/>
+                            <rect x="120" y="120" width="60" height="280" fill="#F0C879" opacity=".7" rx="6"/>
+                            <rect x="200" y="200" width="60" height="200" fill="#52D6A4" opacity=".6" rx="6"/>
+                            <rect x="280" y="100" width="60" height="300" fill="#F0C879" opacity=".85" rx="6"/>
+                        </g>
+                    </svg>
+                    <span class="shot-label">Allocation Breakdown</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section id="privacy">
+        <div class="container">
+            <div class="privacy fade-in">
+                <div>
+                    <span class="eyebrow"><span class="dot"></span>Privacy First</span>
+                    <h2 style="margin-top:14px">Your data never leaves your device.</h2>
+                    <p style="color:var(--text-2);margin-top:14px;font-size:16px">CoinhakoFolio is built around a simple principle: financial data is personal. We don't ask for an account, we don't sync to the cloud, and we don't track you.</p>
+                </div>
+                <ul>
+                    <li><span class="check">✓</span><span>No accounts, no sign-ups, no email collection</span></li>
+                    <li><span class="check">✓</span><span>No cloud sync — everything stored locally on your iPhone</span></li>
+                    <li><span class="check">✓</span><span>No analytics SDKs, no third-party trackers, no telemetry</span></li>
+                    <li><span class="check">✓</span><span>Export or reset your data anytime from Settings</span></li>
+                    <li><span class="check">✓</span><span>Camera and photo library used only for your receipts and notes</span></li>
+                    <li><span class="check">✓</span><span>Full App Store compliance — no hidden networking</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="download">
+        <div class="container">
+            <div class="cta fade-in">
+                <h2>Capture your edge.</h2>
+                <p>Every entry, exit, observation, and lesson in one place — on the device you already carry.</p>
+                <a href="#" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12-1.03.355-2.07 1.044-2.9.812-.97 2.073-1.65 3.12-1.75zM21.6 17.05c-.62 1.43-.92 2.07-1.72 3.34-1.12 1.78-2.71 4-4.69 4.02-1.75.02-2.2-1.14-4.57-1.13-2.37.01-2.87 1.15-4.62 1.13-1.98-.02-3.49-2.03-4.61-3.81C-1.05 16.04-.83 9.05 3.4 5.7c1.49-1.18 3.22-1.92 5.07-1.94 1.97-.02 3.83 1.21 5.04 1.21 1.21 0 3.46-1.5 5.83-1.28.99.04 3.78.4 5.57 3.04-.15.09-3.32 1.94-3.28 5.78.04 4.59 4.02 6.12 4.06 6.14-.04.1-.62 2.15-2.09 4.4z"/></svg>
+                    Get CoinhakoFolio on the App Store
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container foot">
+        <div>
+            <div class="brand" style="margin-bottom:8px">
+                <span class="brand-mark">CF</span>
+                <span>CoinhakoFolio</span>
+            </div>
+            <div style="font-size:13px">Investment Companion · iPhone only</div>
+        </div>
+        <div class="foot-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms of Use</a>
+            <a href="support.html">Support</a>
+            <a href="mailto:Mefepzavap@icloud.com">Contact</a>
+        </div>
+    </div>
+    <div class="container copy">© <span id="year"></span> CoinhakoFolio. All rights reserved.</div>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+    },{threshold:0.12});
+    document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
